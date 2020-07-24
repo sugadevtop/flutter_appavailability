@@ -131,10 +131,10 @@ public class AppAvailability implements MethodCallHandler {
     PackageInfo info = getAppPackageInfo(packageName);
 
     if(info != null) {
-      Intent launchIntent = registrar.context().getPackageManager().getLaunchIntentForPackage(packageName);
+      Intent launchIntent = registrar.activity().getPackageManager().getLaunchIntentForPackage(packageName);
       if (launchIntent != null) {
         launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        registrar.context().startActivity(launchIntent);
+        registrar.activity().startActivity(launchIntent);
         result.success(null);
         return;
       }
